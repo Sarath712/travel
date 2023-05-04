@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Login</title>
+    <style>
+        label { color:white; font-size:20px }
+        form {  background-color:rgb(100,100,100,.7);
+                width:800px;height:370px; text-align:center; line-height:25px;
+                margin-left:250px }
+        h1 { font-family:Gill Sans; text-align:center; color:rgb(153, 204, 255); }
+        h2 { font-family:Gill Sans; text-align:center; color: white ; }
+    </style>
+</head>
+<body style="background-image:url({% static 'images/background2.jpg' %}); background-size:80%;">
+<form action="login" method="post">
+    {% csrf_token %}
+    <label><h5><a href="/" style="color:white"><< Back to Homepage</a></h5></label>
+    <h1>Login</h1>
+    <label>Username :</label><br>
+    <input type="text" name="username" placeholder="Enter username" style="width:50%;padding:5px"><br>
+    <label>Password :</label><br>
+    <input type="password" name="password" placeholder="Enter password" style="width:50%;padding:5px"><br>
+    <input type="submit" value="Login" style="width:80px;height:40px">
+    <input type="reset" style="width:80px;height:40px"><br>
+    <label>Don't have a account? <a href="register" style="color:#ccffff">Register</a></label>
+    {% for msg in messages %}
+    <h2>{{msg}}</h2>
+    {% endfor %}
+</form>
+</body>
+</html>

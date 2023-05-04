@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Registration</title>
+    <style>
+        label { color:white; font-size:18px }
+        form {  background-color:rgb(100,100,100,.7);
+                width:400px;height:650px; text-align:center; line-height:25px }
+        h1 { font-family:Gill Sans; text-align:center; color:rgb(153, 204, 255); }
+        h2 { font-family:Gill Sans; text-align:center; }
+    </style>
+</head>
+<body style="background-image:url({% static 'images/background1.jpg' %});background-size:80%;">
+<form action="register" method="post">
+    {% csrf_token %}
+    <label><h5><a href="/" style="color:white"><< Back to Homepage</a></h5></label>
+    <h1>Create an account</h1>
+    <label>Username :</label><br>
+    <input type="text" name="username" placeholder="Enter username" style="width:80%;padding:5px"><br>
+    <label>First Name :</label><br>
+    <input type="text" name="fname" placeholder="Enter first name" style="width:80%;padding:5px"><br>
+    <label>Last Name :</label><br>
+    <input type="text" name="lname" placeholder="Enter last name" style="width:80%;padding:5px"><br>
+    <label>Email :</label><br>
+    <input type="text" name="email" placeholder="Enter email" style="width:80%;padding:5px"><br>
+    <label>Password :</label><br>
+    <input type="password" name="password" placeholder="Enter password" style="width:80%;padding:5px"><br>
+    <label>Confirm Password :</label><br>
+    <input type="password" name="password1" placeholder="Confirm password" style="width:80%;padding:5px"><br>
+    <input type="submit" style="width:80px;height:40px">
+    <input type="reset" style="width:80px;height:40px"><br>
+    {% for msg in messages %}
+    <h2>{{msg}}</h2>
+    {% endfor %}
+</form>
+</body>
+</html>
